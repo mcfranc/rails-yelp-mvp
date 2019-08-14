@@ -1,0 +1,32 @@
+<%= simple_form_for(@restaurant) do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div class="errors-container">
+      <h3>
+        Can't save changes, please fix the following errors:
+      </h3>
+      <ul>
+        <% @restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.input :name %>
+  </div>
+
+  <div>
+    <%= f.input :address %>
+  </div>
+
+  <div>
+    <%= f.input :phone_number %>
+  </div>
+
+  <div>
+    <%= f.input :category, collection: ["chinese", "italian", "japanese", "french", "belgian"] %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
